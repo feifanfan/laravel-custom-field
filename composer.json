@@ -5,6 +5,13 @@
     "require": {
         "laravel/framework": "^7.0|^8.0"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Overtrue\\LaravelFavorite\\FavoriteServiceProvider"
+            ]
+        }
+    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
