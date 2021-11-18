@@ -1,0 +1,20 @@
+{
+    "name": "hackerff/laravel-custom-form",
+    "description": "a composer for laravel of custom data field",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^7.0|^8.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hackerff\\LaravelCustomForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hackerff",
+            "email": "hacker_ff@163.com"
+        }
+    ]
+}
