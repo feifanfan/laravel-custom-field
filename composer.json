@@ -1,14 +1,13 @@
 {
     "name": "hackerff/laravel-custom-form",
     "description": "a composer for laravel of custom data field",
-    "type": "library",
     "require": {
         "laravel/framework": "^7.0|^8.0"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Overtrue\\LaravelFavorite\\FavoriteServiceProvider"
+                "Hackerff\\LaravelCustomForm\\CustomFieldProvider"
             ]
         }
     },
