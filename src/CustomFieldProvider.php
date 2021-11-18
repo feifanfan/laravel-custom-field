@@ -9,7 +9,7 @@ class CustomFieldProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            \dirname(__DIR__) . '/config/favorite.php' => config_path('custom_form.php'),
+            \dirname(__DIR__) . '/config/custom_form.php' => config_path('custom_form.php'),
         ], 'config');
 
         $this->publishes([
