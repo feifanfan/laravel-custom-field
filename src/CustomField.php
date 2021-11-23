@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Auth;
  */
 class CustomField extends Model
 {
-    protected $fillable = ['creator_id',''];
+    protected $fillable = ['creator_id','name','type','label','remark','is_show','is_unique','extension'];
+
+    protected $hidden = ['deleted_at'];
 
     public function __construct(array $attributes = [])
     {
@@ -25,7 +27,7 @@ class CustomField extends Model
     {
         parent::boot();
         self::creating(function ($field) {
-            $field->creator = Auth::id();
+            $field->creator_id = Auth::id();
         });
     }
     /**
