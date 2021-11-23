@@ -13,7 +13,7 @@ class CreateCustomFieldTable extends Migration
      */
     public function up()
     {
-        Schema::create('custom_field', function (Blueprint $table) {
+        Schema::create('custom_fields', function (Blueprint $table) {
             $table->id();
             $table->string("name")->comment("名称");
             $table->string("type")->comment("类型：字段类型 text单行文本 textarea多行文本 radio单选 date日期 int数字 float小数 phone手机 file文件 checkbox多选 datetime日期时间");

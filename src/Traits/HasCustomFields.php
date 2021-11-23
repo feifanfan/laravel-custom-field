@@ -1,6 +1,7 @@
 <?php
 namespace Hackerff\LaravelCustomForm\Traits;
 
+use Hackerff\LaravelCustomForm\CustomField;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,6 +12,6 @@ trait HasCustomFields
 {
     public function customFields()
     {
-        return $this->morphMany(config('custom_form.field_table'),'type');
+        return $this->morphMany(CustomField::class,'type');
     }
 }
