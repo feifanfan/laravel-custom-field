@@ -16,6 +16,7 @@ class CreateCustomFieldTable extends Migration
         Schema::create('custom_fields', function (Blueprint $table) {
             $table->id();
             $table->string("name")->comment("名称");
+            $table->string("field_name")->comment("英文名称");
             $table->string("type")->comment("类型：字段类型 text单行文本 textarea多行文本 radio单选 date日期 int数字 float小数 phone手机 file文件 checkbox多选 datetime日期时间");
             $table->string("label")->default("")->comment("标签：customers客户，tracks:线索...,自行设计，与表名相同");
             $table->string("remark")->default("")->comment("备注");
