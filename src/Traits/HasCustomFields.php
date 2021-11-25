@@ -14,4 +14,12 @@ trait HasCustomFields
     {
         return $this->morphMany(CustomField::class,'type');
     }
+
+    public function isEmptyField()
+    {
+        if (empty($this->customFields())){
+            return true;
+        }
+        return false;
+    }
 }

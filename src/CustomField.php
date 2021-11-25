@@ -23,9 +23,11 @@ use Illuminate\Support\Facades\Auth;
  */
 class CustomField extends Model
 {
-    protected $fillable = ['creator_id', 'name', 'type', 'label', 'remark', 'is_show', 'is_unique', 'extension', 'field_name'];
+    protected $fillable = ['creator_id', 'name', 'type', 'label', 'remark', 'is_show', 'is_unique', 'extension', 'options', 'field_name'];
 
     protected $hidden = ['deleted_at'];
+
+    protected $casts = ['options'=>'json'];
 
     public const TEXT_TYPE = 'text';
     public const TEXTAREA_TYPE = 'textarea';
@@ -61,10 +63,18 @@ class CustomField extends Model
     protected static function boot()
     {
         parent::boot();
+
         self::creating(function ($field) {
             $field->creator_id = Auth::id();
-            if ($field->type == self::RADIO_TYPE || $field->type == self::CHECKBOX_TYPE) {
-                abort_if(empty($field->options), 422, "选项不能为空");
+            self::typeValidate($field);
+        });
+
+        self::updating(function ($field) {
+            if($field->isDirty('type')){
+                self::typeValidate($field);
+                if ($field->type != self::RADIO_TYPE && $field->type != self::CHECKBOX_TYPE) {
+                    $field->options = null;
+                }
             }
         });
 
@@ -90,4 +100,13 @@ class CustomField extends Model
     {
         return $this->morphTo();
     }
+
+    public static function typeValidate($field)
+    {
+        abort_if(!in_array($field->type, array_keys(self::TYPE_LABELS)), 422, 'type验证失败');
+        if ($field->type == self::RADIO_TYPE || $field->type == self::CHECKBOX_TYPE) {
+            abort_if(empty($field->options), 422, "选项不能为空");
+        }
+    }
+
 }
