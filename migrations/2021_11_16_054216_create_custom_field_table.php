@@ -23,6 +23,7 @@ class CreateCustomFieldTable extends Migration
             $table->integer("sorting")->default(1)->comment("排序，从小到大");
             $table->boolean("is_unique")->default(true)->comment("是否必填");
             $table->string("creator_id")->comment("创建者id");
+            $table->json("options")->comment("选项，如果类型为选项时，不能为空");
             $table->string("extension")->default("")->comment("自定义字段");
             $table->timestamps();
             $table->softDeletes();

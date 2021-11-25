@@ -8,6 +8,6 @@ trait HasCustomFieldData
 {
     public function customFieldData()
     {
-        return $this->morphMany(CustomFieldData::class,'label','label','id','field_id');
+        return $this->hasMany(CustomFieldData::class,'user_id')->orderByDesc("batch_id")->groupBy("field_id");
     }
 }
