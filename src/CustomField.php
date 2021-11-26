@@ -80,7 +80,7 @@ class CustomField extends Model
 
         self::created(function ($field) {
             if (empty($field->filed_name)) {
-                $field->filed_name = 'field_'.$field->id;
+                $field->field_name = 'field_'.$field->id;
             }
         });
     }
