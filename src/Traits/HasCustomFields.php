@@ -17,9 +17,7 @@ trait HasCustomFields
 
     public function isEmptyField()
     {
-        if (empty($this->customFields())){
-            return true;
-        }
-        return false;
+        $fields = CustomField::where("type",$this->getTable())->get();
+        return $fields->isEmpty();
     }
 }
