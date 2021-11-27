@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class CustomFieldData extends Model
 {
-    protected $fillable = ['user_id', 'field_id', 'name', 'value', 'batch_id'];
+    protected $fillable = ['user_id', 'field_id', 'name', 'value', 'batch_id','field_name'];
 
     protected $hidden = ['deleted_at'];
 
@@ -46,6 +46,10 @@ class CustomFieldData extends Model
             if (empty($field)) {
                 DB::rollBack();
                 abort(422, "数据填写错误");
+            }
+            if ($field->is_unique){
+                DB::rollBack();
+                abort(422,"有必填项未填写");
             }
             $fields = [
                 'field_id' => $field['id'],
