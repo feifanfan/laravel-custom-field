@@ -54,7 +54,7 @@ class CustomFieldData extends Model
             $fields = [
                 'field_id' => $field['id'],
                 'name' => $field['name'],
-                'field_name' => $field['field_name'],
+                'field_name' => $datum['name'],
                 'value' => $datum['value'],
                 'batch_id' => $time,
                 'user_id' => $userId
