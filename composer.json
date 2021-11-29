@@ -1,6 +1,7 @@
 {
     "name": "hackerff/laravel-custom-form",
     "description": "a composer for laravel of custom data field",
+    "version": "1.0.0",
     "require": {
         "laravel/framework": "^7.0|^8.0"
     },
