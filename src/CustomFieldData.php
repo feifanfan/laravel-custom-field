@@ -47,7 +47,7 @@ class CustomFieldData extends Model
                 DB::rollBack();
                 abort(422, "数据填写错误");
             }
-            if ($field->is_unique){
+            if ($field->is_unique && empty($datum['value'])){
                 DB::rollBack();
                 abort(422,"有必填项未填写");
             }
